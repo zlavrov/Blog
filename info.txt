@@ -1,0 +1,41 @@
+User
+ -> id INT *
+ -> name STRING *
+ -> email STRING *
+ -> roles JSON *
+ -> password STRING *
+ -> balance INT *
+ -> avatar STRING *
+ -> createdAt DATETIME *
+ -> updatedAt DATETIME *
+
+Blog
+ -> id INT *
+ -> user_id RELATION *
+ -> title STRING *
+ -> description TEXT *
+ -> icon_blog STRING *
+ -> status SMALLINT *
+ -> createdAt DATETIME *
+ -> updatedAt DATETIME *
+
+Article
+ -> id INT *
+ -> user_id RELATION *
+ -> blog_id RELATION *
+ -> title STRING *
+ -> description TEXT *
+ -> icon_article STRING *
+ -> status SMALLINT *
+ -> createdAt DATETIME *
+ -> updatedAt DATETIME *
+
+Comment
+ -> id INT *
+ -> user_id RELATION *
+ -> article_id RELATION *
+ -> blog_id RELATION *
+ -> content TEXT *
+ -> status SMALLINT *
+ -> createdAt DATETIME *
+ -> updatedAt DATETIME *
