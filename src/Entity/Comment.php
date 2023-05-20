@@ -16,15 +16,15 @@ class Comment
 
     #[ORM\ManyToOne(inversedBy: 'comments')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?User $user_id = null;
+    private ?User $users = null;
 
     #[ORM\ManyToOne(inversedBy: 'comments')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Article $article_id = null;
+    private ?Article $article = null;
 
     #[ORM\ManyToOne(inversedBy: 'comments')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Blog $blog_id = null;
+    private ?Blog $blog = null;
 
     #[ORM\Column(type: Types::TEXT)]
     private ?string $content = null;
@@ -45,36 +45,36 @@ class Comment
 
     public function getUserId(): ?User
     {
-        return $this->user_id;
+        return $this->users;
     }
 
-    public function setUserId(?User $user_id): self
+    public function setUserId(?User $users): self
     {
-        $this->user_id = $user_id;
+        $this->users = $users;
 
         return $this;
     }
 
     public function getArticleId(): ?Article
     {
-        return $this->article_id;
+        return $this->article;
     }
 
-    public function setArticleId(?Article $article_id): self
+    public function setArticleId(?Article $article): self
     {
-        $this->article_id = $article_id;
+        $this->article = $article;
 
         return $this;
     }
 
     public function getBlogId(): ?Blog
     {
-        return $this->blog_id;
+        return $this->blog;
     }
 
-    public function setBlogId(?Blog $blog_id): self
+    public function setBlogId(?Blog $blog): self
     {
-        $this->blog_id = $blog_id;
+        $this->blog = $blog;
 
         return $this;
     }

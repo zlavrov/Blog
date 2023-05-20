@@ -48,13 +48,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $updatedAt = null;
 
-    #[ORM\OneToMany(mappedBy: 'user_id', targetEntity: Blog::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'users', targetEntity: Blog::class, orphanRemoval: true)]
     private Collection $blogs;
 
-    #[ORM\OneToMany(mappedBy: 'user_id', targetEntity: Article::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'users', targetEntity: Article::class, orphanRemoval: true)]
     private Collection $articles;
 
-    #[ORM\OneToMany(mappedBy: 'user_id', targetEntity: Comment::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'users', targetEntity: Comment::class, orphanRemoval: true)]
     private Collection $comments;
 
     public function __construct()

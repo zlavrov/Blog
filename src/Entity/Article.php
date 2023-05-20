@@ -18,11 +18,11 @@ class Article
 
     #[ORM\ManyToOne(inversedBy: 'articles')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?User $user_id = null;
+    private ?User $users = null;
 
     #[ORM\ManyToOne(inversedBy: 'articles')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Blog $blog_id = null;
+    private ?Blog $blog = null;
 
     #[ORM\Column(length: 255)]
     private ?string $title = null;
@@ -42,7 +42,7 @@ class Article
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $updatedAt = null;
 
-    #[ORM\OneToMany(mappedBy: 'article_id', targetEntity: Comment::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'article', targetEntity: Comment::class, orphanRemoval: true)]
     private Collection $comments;
 
     public function __construct()
@@ -57,24 +57,24 @@ class Article
 
     public function getUserId(): ?User
     {
-        return $this->user_id;
+        return $this->users;
     }
 
-    public function setUserId(?User $user_id): self
+    public function setUserId(?User $users): self
     {
-        $this->user_id = $user_id;
+        $this->users = $users;
 
         return $this;
     }
 
     public function getBlogId(): ?Blog
     {
-        return $this->blog_id;
+        return $this->blog;
     }
 
-    public function setBlogId(?Blog $blog_id): self
+    public function setBlogId(?Blog $blog): self
     {
-        $this->blog_id = $blog_id;
+        $this->blog = $blog;
 
         return $this;
     }

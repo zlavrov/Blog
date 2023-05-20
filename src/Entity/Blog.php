@@ -18,7 +18,7 @@ class Blog
 
     #[ORM\ManyToOne(inversedBy: 'blogs')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?User $user_id = null;
+    private ?User $users = null;
 
     #[ORM\Column(length: 255)]
     private ?string $title = null;
@@ -38,10 +38,10 @@ class Blog
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $updatedAt = null;
 
-    #[ORM\OneToMany(mappedBy: 'blog_id', targetEntity: Article::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'blog', targetEntity: Article::class, orphanRemoval: true)]
     private Collection $articles;
 
-    #[ORM\OneToMany(mappedBy: 'blog_id', targetEntity: Comment::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'blog', targetEntity: Comment::class, orphanRemoval: true)]
     private Collection $comments;
 
     public function __construct()
@@ -57,12 +57,12 @@ class Blog
 
     public function getUserId(): ?User
     {
-        return $this->user_id;
+        return $this->users;
     }
 
-    public function setUserId(?User $user_id): self
+    public function setUserId(?User $users): self
     {
-        $this->user_id = $user_id;
+        $this->users = $users;
 
         return $this;
     }
