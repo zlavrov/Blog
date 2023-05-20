@@ -194,6 +194,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+    public function prePersist()
+    {
+        $this->createdAt = new \DateTime('now');
+    }
+
+    public function preUpdate()
+    {
+        $this->updatedAt = new \DateTime('now');
+    }
+
     /**
      * @return Collection<int, Blog>
      */
